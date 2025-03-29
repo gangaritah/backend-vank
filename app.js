@@ -11,7 +11,13 @@ dotenv.config();
 
 const app = express()
   .use(bodyParser.json())
-  .use(cookieParser(process.env.COOKIE_SECRET));
+  .use(cookieParser(process.env.COOKIE_SECRET))
+  .use(cors({
+    origin: '*',
+    credentials: true,
+    methods: '*',
+    allowedHeaders: '*'
+  }));
 
 app.use('/user', user);
 
